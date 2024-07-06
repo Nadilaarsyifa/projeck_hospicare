@@ -139,21 +139,21 @@
 
     <div class="center-content">
         <main class="form-signin w-100 m-auto">
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
                 <div class="text-center">
                     <img class="mb-3" src="logo6.png" alt="" width="130" height="150">
                 </div>
                 <h5 class="h5 mb-3 fw-normal text-center">Please login</h5>
 
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <input name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email address</label>
                     <div class="invalid-feedback">
                         Masukkan email yang valid
                     </div>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>
                     <div class="invalid-feedback">
                         Masukkan password
@@ -166,7 +166,7 @@
                         Remember me
                     </label>
                 </div>
-                <button class="btn btn-primary w-100 py-2" type="submit" style="background-color: rgb(2, 139, 44)">Login</button>
+                <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc" style="background-color: rgb(2, 139, 44)">Login</button>
                 <p class="mt-5 mb-3 text-body-secondary text-center">&copy; 2024–2025</p>
             </form>
         </main>
