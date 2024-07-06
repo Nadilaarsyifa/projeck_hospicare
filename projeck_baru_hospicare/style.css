@@ -1,0 +1,26 @@
+:root {
+    --custom-background-color: rgb(2, 139, 44) !important;
+}
+
+.nav-link.active {
+    background-color: var(--custom-background-color) !important;
+}
+
+.dropdown-item:active {
+    background-color: var(--custom-background-color) !important;
+}
+
+.btn-bd-primary {
+    background-color: var(--custom-background-color) !important;
+}
+
+.navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 24pt;
+}
+
+.nav-link {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+}
