@@ -9,6 +9,7 @@ if (!empty($_POST['submit_validate'])) {
     $hasil = mysqli_fetch_array($query);
     if ($hasil) {
         $_SESSION['username_hospicare'] = $username;
+        $_SESSION['level_hospicare'] = $hasil['level'];
         header('Location: ../beranda');
         exit(); // Menambahkan exit untuk memastikan tidak ada output yang dihasilkan setelah header
     } else {

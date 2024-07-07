@@ -1,8 +1,13 @@
 <?php
-session_start();
+//session_start();
 if (empty($_SESSION['username_hospicare'])) {
     header('location:login');
 }
+include "proses/connect.php";
+$query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_hospicare]' ");
+$hasil = mysqli_fetch_array($query);
+
+
 ?>
 
 <!doctype html>
@@ -29,12 +34,12 @@ if (empty($_SESSION['username_hospicare'])) {
             <!----end sidebar---->
 
             <!---- content ---->
-            <div class="col-lg-9">
-                <?php
-                include $page;
-                ?>
 
-            </div>
+            <?php
+            include $page;
+            ?>
+
+
             <!----end content---->
 
         </div>

@@ -11,7 +11,9 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Username
+                        <?php
+                        echo $hasil['username'];
+                        ?>
                     </a>
                     <ul class="dropdown-menu mt-4">
                         <li><a class="dropdown-item" href="#"> <i class="bi bi-person"></i> profil</a></li>

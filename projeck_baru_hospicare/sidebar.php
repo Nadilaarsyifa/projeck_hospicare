@@ -15,26 +15,43 @@
                             <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'beranda') || !isset($_GET['x'])) ? 'active link-light' : 'link-dark'; ?>" aria-current="page" href="beranda"><i class="bi bi-house-door"></i> Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasikamar') ? 'active link-light' : 'link-dark'; ?>" href="informasikamar"><i class="bi bi-door-open"></i> Informasi Kamar</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasikamar') ? 'active link-light' : 'link-dark'; ?>" href="informasikamar"><i class="bi bi-door-open"></i> Daftar Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftar') ? 'active link-light' : 'link-dark'; ?>" href="pendaftar"><i class="bi bi-people"></i> Pasien/Pendaftar</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'poliklinik') ? 'active link-light' : 'link-dark'; ?>" href="poliklinik"><i class="bi bi-lungs"></i> Daftar Poliklinik</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'poliklinik') ? 'active link-light' : 'link-dark'; ?>" href="poliklinik"><i class="bi bi-lungs"></i> Informasi Poliklinik</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'dokter') ? 'active link-light' : 'link-dark'; ?>" href="dokter"><i class="bi bi-lungs"></i> Daftar Dokter </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftaran') ? 'active link-light' : 'link-dark'; ?>" href="pendaftaran"><i class="bi bi-journal-text"></i> Pendaftaran Online</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'berita') ? 'active link-light' : 'link-dark'; ?>" href="berita"><i class="bi bi-newspaper"></i> Berita</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftar') ? 'active link-light' : 'link-dark'; ?>" href="pendaftar"><i class="bi bi-people"></i> Pasien/Pendaftar</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'kontak') ? 'active link-light' : 'link-dark'; ?>" href="kontak"><i class="bi bi-telephone"></i> Kontak</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasirs') ? 'active link-light' : 'link-dark'; ?>" href="informasirs"><i class="bi bi-telephone"></i> Informasi Rumah sakit</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'feedback') ? 'active link-light' : 'link-dark'; ?>" href="feedback"><i class="bi bi-chat-text"></i> Feedback</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis') ? 'active link-light' : 'link-dark'; ?>" href="riwayatmedis"><i class="bi bi-telephone"></i> Riwayat medis</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'jadwalsaya') ? 'active link-light' : 'link-dark'; ?>" href="jadwalsaya"><i class="bi bi-telephone"></i> Jadwal saya</a>
+                        </li>
+
+                        <?php if ($hasil['level'] == 1) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'user') ? 'active link-light' : 'link-dark'; ?>" href="user"><i class="bi bi-newspaper"></i> user</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'report') ? 'active link-light' : 'link-dark'; ?>" href="report"><i class="bi bi-chat-text"></i> Report</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
