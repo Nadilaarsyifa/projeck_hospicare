@@ -19,7 +19,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> logout</a></li>
+                        <li><a class="dropdown-item" href="logout"><i class="bi bi-box-arrow-left"></i> logout</a></li>
                     </ul>
                 </li>
             </ul>

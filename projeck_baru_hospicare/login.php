@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!empty($_SESSION['username_hospicare'])) {
+    header('location:beranda');
+}
+?>
+
+
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 

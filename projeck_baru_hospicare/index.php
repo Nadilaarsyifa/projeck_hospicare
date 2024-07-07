@@ -26,7 +26,10 @@
                     include "main.php";
                 } elseif (isset($_GET['x']) && $_GET['x'] == 'login') {
                     include "login.php";
+                } elseif (isset($_GET['x']) && $_GET['x'] == 'logout') {
+                    include "proses/proses_logout.php";
                 } else {
+                    $page = "beranda.php";
                     include "main.php";
                 }
                 ?>
