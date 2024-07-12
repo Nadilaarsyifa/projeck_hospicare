@@ -22,7 +22,7 @@ $hasil = mysqli_fetch_array($query);
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body style="height: 1000px;">
+<body>
     <!--- Header --->
     <?php include "header.php"; ?>
     <!--- end Header --->

@@ -125,7 +125,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalview<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaledit<?php echo $row['id'] ?>"><i class="bi bi-pen"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>"><i class=" bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                             <?php
@@ -146,6 +146,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 </div>
                                 <div class="modal-body">
                                     <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-floating mb-3">
@@ -217,7 +218,8 @@ while ($record = mysqli_fetch_array($query)) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" novalidate action="proses/proses_proses_edit_user.php" method="POST">
+                                    <form class="needs-validation" novalidate action="proses/proses_edit_user.php" method="POST">
+                                        <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-floating mb-3">
@@ -246,9 +248,9 @@ while ($record = mysqli_fetch_array($query)) {
                                                         $data = array("Admin", "ADM RS", "Pasien");
                                                         foreach ($data as $key => $value) {
                                                             if ($row['level'] == $key + 1) {
-                                                                echo "<option selected value='$key'>$value</option>";
+                                                                echo "<option selected value=" . ($key + 1) . ">$value</option>";
                                                             } else {
-                                                                echo "<option  value='$key'>$value</option>";
+                                                                echo "<option  value=" . ($key + 1) . ">$value</option>";
                                                             }
                                                         }
                                                         ?>
@@ -280,6 +282,39 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                     <!-- end Modal edit-->
+
+
+
+                    <!-- Modal delete-->
+                    <div class="modal fade" id="modaldelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-fullscreen-md-down">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete Data user</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="needs-validation" novalidate action="proses/proses_delete_user.php" method="POST">
+                                        <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                        <div class="col-lg-12">
+                                            <?php if ($row['username'] == $_SESSION['username_hospicare']) {
+                                                echo "<div class='alert alert-danger'> Anda tidak dapat menghapus akun sendiri </div>";
+                                            } else {
+                                                echo "Apakah anda yakin ingin menghapus user <b> $row[username]</b>";
+                                            }
+                                            ?>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_hospicare']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Modal delete-->
 
 
 
