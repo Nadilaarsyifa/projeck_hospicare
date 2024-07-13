@@ -102,13 +102,13 @@ while ($record = mysqli_fetch_array($query)) {
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="text-nowrap">
                                 <th scope="col">No</th>
                                 <th scope="col">Foto</th>
-                                <th scope="col">Nama_dokter</th>
-                                <th scope="col">Jenis_kelamin</th>
+                                <th scope="col">Nama Dokter</th>
+                                <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Spesialis</th>
-                                <th scope="col">Jadwal_Praktik</th>
+                                <th scope="col">Jadwal Praktik</th>
                                 <th scope="col">pendidikan</th>
                                 <th scope="col">No HP</th>
                                 <th scope="col">keterangan</th>
@@ -120,21 +120,23 @@ while ($record = mysqli_fetch_array($query)) {
                             $no = 1;
                             foreach ($result as $row) {
                             ?>
-                                <tr>
-                                    <th scope="row"><?php echo $no++ ?></th>
-                                    <td><?php echo $row['foto'] ?></td>
-                                    <td><?php echo $row['nama_dokter'] ?></td>
-                                    <td><?php echo $row['jenis_kelamin'] ?></td>
-                                    <td><?php echo $row['spesialis'] ?></td>
-                                    <td><?php echo $row['jadwal_praktik'] ?></td>
-                                    <td><?php echo $row['pendidikan'] ?></td>
-                                    <td><?php echo $row['nohp'] ?></td>
-                                    <td><?php echo $row['keterangan'] ?></td>
-                                    <td class="d-flex">
-                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalview<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaledit<?php echo $row['id'] ?>"><i class="bi bi-pen"></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>"><i class=" bi bi-trash"></i></button>
-                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalresetpassword<?php echo $row['id'] ?>"><i class=" bi bi-key"></i></button>
+                                <tr class="text-nowrap">
+                                    <th scope="row"><?php echo $no++; ?></th>
+                                    <td><img src="assets/img/<?php echo $row['foto']; ?>" style="width: 150px; height: 120px;" alt="..."></td>
+                                    <td><?php echo $row['nama_dokter']; ?></td>
+                                    <td><?php echo $row['jenis_kelamin']; ?></td>
+                                    <td><?php echo $row['spesialis']; ?></td>
+                                    <td><?php echo $row['jadwal_praktik']; ?></td>
+                                    <td><?php echo $row['pendidikan']; ?></td>
+                                    <td><?php echo $row['nohp']; ?></td>
+                                    <td><?php echo $row['keterangan']; ?></td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalview<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
+                                            <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaledit<?php echo $row['id'] ?>"><i class="bi bi-pen"></i></button>
+                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>"><i class=" bi bi-trash"></i></button>
+                                            <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalresetpassword<?php echo $row['id'] ?>"><i class=" bi bi-key"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php
