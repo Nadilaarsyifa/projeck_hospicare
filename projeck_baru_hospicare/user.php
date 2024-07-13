@@ -51,7 +51,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <select class="form-select" id="floatingLevel" aria-label="Default select example" name="level" required>
-                                                <option selected hidden value="0">Pilih level user</option>
+                                                <option selected hidden value="">Pilih level user</option>
                                                 <option value="1">Admin</option>
                                                 <option value="2">Adm RS</option>
                                                 <option value="3">Pasien</option>
@@ -125,7 +125,8 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalview<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaledit<?php echo $row['id'] ?>"><i class="bi bi-pen"></i></button>
-                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>"><i class=" bi bi-trash"></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>"><i class=" bi bi-trash"></i></button>
+                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalresetpassword<?php echo $row['id'] ?>"><i class=" bi bi-key"></i></button>
                                     </td>
                                 </tr>
                             <?php
@@ -232,7 +233,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="email" class="form-control" id="floatingUsername" placeholder="name@example.com" name="username" required value="<?php echo $row['username']; ?>">
+                                                    <input <?php echo ($row['username'] == $_SESSION['username_hospicare']) ? 'disabled' : ''; ?> type="email" class="form-control" id="floatingUsername" placeholder="name@example.com" name="username" required value="<?php echo $row['username']; ?>">
                                                     <label for="floatingUsername">Username</label>
                                                     <div class="invalid-feedback">
                                                         Masukkan username
@@ -318,27 +319,41 @@ while ($record = mysqli_fetch_array($query)) {
 
 
 
+
+                    <!-- Modal reset password-->
+                    <div class="modal fade" id="modalresetpassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-fullscreen-md-down">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Reset password</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="needs-validation" novalidate action="proses/proses_reset_password.php" method="POST">
+                                        <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                        <div class="col-lg-12">
+                                            <?php if ($row['username'] == $_SESSION['username_hospicare']) {
+                                                echo "<div class='alert alert-danger'> Anda tidak dapat Mereset password sendiri </div>";
+                                            } else {
+                                                echo "Apakah anda yakin ingin mereset password user <b> $row[username]</b> menjadi password bawaan sistem yaitu <b>password</b>";
+                                            }
+                                            ?>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_hospicare']) ? 'disabled' : ''; ?>>Reset password</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Modal reset password-->
+
+
+
+
+
                 <?php } ?>
             <?php } ?>
-
-            <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (() => {
-                    'use strict'
-
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    const forms = document.querySelectorAll('.needs-validation')
-
-                    // Loop over them and prevent submission
-                    Array.from(forms).forEach(form => {
-                        form.addEventListener('submit', event => {
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                            }
-
-                            form.classList.add('was-validated')
-                        }, false)
-                    })
-                })()
-            </script>

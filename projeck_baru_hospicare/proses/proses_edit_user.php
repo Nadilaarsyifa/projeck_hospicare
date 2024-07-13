@@ -12,12 +12,17 @@ $password = md5('password');
 $message = "";  //  Inisialisasi variabel $message
 
 if (!empty($_POST['input_user_validate'])) {
-    $query = mysqli_query($conn, "UPDATE tb_user SET nama='$name', username='$username', level='$level', nohp='$nohp', alamat='$alamat' WHERE id='$id'");
-
-    if ($query) {
-        $message = '<script>alert("data berhasil di update"); window.location="../user"</script>';
+    $select = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'");
+    if (mysqli_num_rows($select) > 0) {
+        $message = '<script>alert("Username yang dimasukkan telah ada"); window.location="../user";</script>';
     } else {
-        $message = '<script>alert("data gagal diupdate")</script>';
+        $query = mysqli_query($conn, "UPDATE tb_user SET nama='$name', username='$username', level='$level', nohp='$nohp', alamat='$alamat' WHERE id='$id'");
+
+        if ($query) {
+            $message = '<script>alert("data berhasil di update"); window.location="../user"</script>';
+        } else {
+            $message = '<script>alert("data gagal diupdate")</script>';
+        }
     }
 }
 
