@@ -44,7 +44,7 @@ $hasil = mysqli_fetch_array($query);
 
         </div>
 
-        <div class="fixed-bottom text-center mb-2">
+        <div class="fixed-bottom text-center py-2" style="background-color: rgb(182, 182, 182);">
             Copyright 2024 HospiCare
         </div>
     </div>

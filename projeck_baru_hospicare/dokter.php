@@ -9,82 +9,129 @@ while ($record = mysqli_fetch_array($query)) {
 <div class="col-lg-9 mt-2">
     <div class="card">
         <div class="card-header">
-            Halaman user
+            Halaman Dokter
         </div>
         <div class="card-body w-100">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaltambahuser" style="background-color: rgb(2, 139, 44)">Tambah User</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaltambahuser" style="background-color: rgb(2, 139, 44)">Tambah Dokter</button>
                 </div>
             </div>
-            <!-- Modal  tambah user baru-->
+            <!-- Modal  tambah dokter baru-->
             <div class="modal fade" id="modaltambahuser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah user</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Dokter</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+                            <form class="needs-validation" novalidate action="proses/proses_input_dokter.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingNama" placeholder="your name" name="nama" required>
-                                            <label for="floatingNama">Nama</label>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control py-3" id="floatingfoto" placeholder="foto" name="foto" required>
+                                            <label class="input-group-text" for="floatingfoto"> Upload Foto</label>
                                             <div class="invalid-feedback">
-                                                Masukkan nama
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingUsername" placeholder="name@example.com" name="username" required>
-                                            <label for="floatingUsername">Username</label>
-                                            <div class="invalid-feedback">
-                                                Masukkan username
+                                                Masukkan Foto
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <select class="form-select" id="floatingLevel" aria-label="Default select example" name="level" required>
-                                                <option selected hidden value="">Pilih level user</option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Adm RS</option>
-                                                <option value="3">Pasien</option>
-                                            </select>
-                                            <label for="floatingLevel">Level user</label>
+                                            <input type="number" class="form-control" id="floatingid" placeholder="your id" name="Id_dokter" required>
+                                            <label for="floatingid"> ID Dokter</label>
                                             <div class="invalid-feedback">
-                                                Pilih level user
+                                                Masukkan Id Dokter
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingHP" placeholder="08xxxxxx" name="nohp">
-                                            <label for="floatingHP">NO HP</label>
 
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingUsername" placeholder="your name" name="nama_dokter" required>
+                                            <label for="floatingUsername"> Nama Dokter</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Nama Dokter
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="floatingjeniskelamin" aria-label="Default select example" name="jenis_kelamin" required>
+                                                <option selected hidden value="">Pilih Jenis kelamin</option>
+                                                <option value="Laki-laki">Laki-laki</option>
+                                                <option value="perempuan">Perempuan</option>
+                                            </select>
+                                            <label for="floatingjeniskelamin">Jenis kelamin</label>
+                                            <div class="invalid-feedback">
+                                                Pilih Jenis kelamin
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingspesialis" placeholder="dokter spesialis" name="spesialis" required>
+                                            <label for="floatingspesialis"> Spesialis </label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Spesialis
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12">
+
+                                    <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="floatingPassword" placeholder="your password" disabled value="1234567" name="password">
-                                            <label for="floatingPassword">Password</label>
+                                            <input type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="jadwal_praktik" required>
+                                            <label for="floatingjadwal"> Jadwal Praktik Dokter</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Jadwal Praktik dokter
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="floatingnohp" placeholder="o8xxxxxxxx" name="nohp" required>
+                                            <label for="floatingnohp"> No HandPhone</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan NO HP
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-floating">
-                                    <textarea class="form-control" id="floatingAlamat" style="height: 100px" name="alamat"></textarea>
-                                    <label for="floatingAlamat">Alamat</label>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" id="floatingpendidikan" style="height: 100px" name="pendidikan" required></textarea>
+                                            <label for="floatingpendidikan"> pendidikan </label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Pendidikan
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="floatingketerangan" style="height: 100px" name="keterangan" required></textarea>
+                                            <label for="floatingAlamat"> Keterangan </label>
+                                            <div class="invalid-feedback">
+                                                Masukkan keterangan
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="input_user_validate" value="12345">Save changes</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="input_dokter_validate" value="12345">Save changes</button>
                                 </div>
                             </form>
                         </div>
@@ -92,7 +139,7 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
             </div>
 
-            <!--end  Modal  tambah user baru-->
+            <!--end  Modal  tambah dokter baru-->
 
             <?php
             if (empty($result)) {
@@ -105,6 +152,7 @@ while ($record = mysqli_fetch_array($query)) {
                             <tr class="text-nowrap">
                                 <th scope="col">No</th>
                                 <th scope="col">Foto</th>
+                                <th scope="col">Id_ dokter</th>
                                 <th scope="col">Nama Dokter</th>
                                 <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Spesialis</th>
@@ -123,6 +171,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <tr class="text-nowrap">
                                     <th scope="row"><?php echo $no++; ?></th>
                                     <td><img src="assets/img/<?php echo $row['foto']; ?>" style="width: 150px; height: 120px;" alt="..."></td>
+                                    <td><?php echo $row['Id_dokter']; ?></td>
                                     <td><?php echo $row['nama_dokter']; ?></td>
                                     <td><?php echo $row['jenis_kelamin']; ?></td>
                                     <td><?php echo $row['spesialis']; ?></td>
