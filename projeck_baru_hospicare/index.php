@@ -22,12 +22,12 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
 } elseif (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis') {
     $page = "riwayatmedis.php";
     include "main.php";
-} elseif (isset($_GET['x']) && $_GET['x'] == 'jadwalsaya') {
-    $page = "jadwalsaya.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip') {
+    $page = "kamarsemivip.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'login') {
     include "login.php";
-}  elseif (isset($_GET['x']) && $_GET['x'] == 'logout') {
+} elseif (isset($_GET['x']) && $_GET['x'] == 'logout') {
     include "proses/proses_logout.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'user') {
     if ($_SESSION['level_hospicare'] == 1) {

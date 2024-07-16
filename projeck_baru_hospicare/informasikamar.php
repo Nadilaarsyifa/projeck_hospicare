@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kamar Semi VIP</h5>
                         <p class="card-text">Kamar dengan fasilitas standar.</p>
-                        <a href="jadwalsaya" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
+                        <a href="kamarsemivip" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
                     </div>
                 </div>
             </div>

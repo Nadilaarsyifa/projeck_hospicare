@@ -42,7 +42,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'jadwalsaya'); ?> href="jadwalsaya"></a>
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip'); ?> href="kamarsemivip"></a>
                         </li>
 
                         <?php if ($hasil['level'] == 1) { ?>
