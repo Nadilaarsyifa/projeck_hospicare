@@ -38,11 +38,11 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis') ? 'active link-light' : 'link-dark'; ?>" href="riwayatmedis"><i class="bi bi-activity"></i></i> Riwayat medis</a>
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis'); ?> href="riwayatmedis"></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'jadwalsaya') ? 'active link-light' : 'link-dark'; ?>" href="jadwalsaya"><i class="bi bi-calendar-week"></i> Jadwal saya</a>
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'jadwalsaya'); ?> href="jadwalsaya"></a>
                         </li>
 
                         <?php if ($hasil['level'] == 1) { ?>
@@ -50,7 +50,7 @@
                                 <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'user') ? 'active link-light' : 'link-dark'; ?>" href="user"><i class="bi bi-person-gear"></i> user</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'report') ? 'active link-light' : 'link-dark'; ?>" href="report"><i class="bi bi-chat-text"></i> Report</a>
+                                <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'report') ?> href="report"></a>
                             </li>
                         <?php } ?>
                     </ul>

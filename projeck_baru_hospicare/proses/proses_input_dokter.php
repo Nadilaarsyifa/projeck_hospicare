@@ -64,3 +64,4 @@ if (!empty($_POST['input_dokter_validate'])) {
     }
 }
 echo $message;
+?>

@@ -102,52 +102,209 @@ while ($record = mysqli_fetch_array($query)) {
             <section class="py-0 text-right container">
                 <div class="row py-0">
                     <div class="col-lg-5 col-md-1 ms-auto">
-                        <p class="text-end">
-                            <a href="#" class="btn btn-secondary my-1" style="background-color: rgb(2, 139, 44)">Tambah Poliklinik</a>
-                        </p>
+                        <button class="btn btn-secondary my-1" data-bs-toggle="modal" style="background-color: rgb(2, 139, 44)" data-bs-target="#modaltambahpoliklinik">Tambah Poliklinik</button>
                     </div>
                 </div>
+
+                <!-- Modal tambah poliklinik baru -->
+                <div class="modal fade" id="modaltambahpoliklinik" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-fullscreen-md-down">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Poliklinik</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" novalidate action="proses/proses_input_poliklinik.php" method="POST" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control py-3" id="floatingfoto" placeholder="foto" name="foto" required>
+                                                <label class="input-group-text" for="floatingfoto"> Upload Foto</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Foto
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="floatingIDPoliklinik" placeholder="ID Poliklinik" name="id_poli" required>
+                                                        <label for="floatingIDPoliklinik">ID Poliklinik</label>
+                                                        <div class="invalid-feedback">
+                                                            Masukkan ID Poliklinik
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="floatingNamaPoliklinik" placeholder="Nama Poliklinik" name="nama_poli" required>
+                                                        <label for="floatingNamaPoliklinik">Nama Poliklinik</label>
+                                                        <div class="invalid-feedback">
+                                                            Masukkan Nama Poliklinik
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control" id="floatingKeterangan" style="height: 200px" name="keterangan" required></textarea>
+                                                <label for="floatingKeterangan">Keterangan</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Keterangan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="input_poliklinik_validate">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal tambah poliklinik baru -->
             </section>
-
-
-
             <div class="album py-5 bg-body-tertiary">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <?php if (!empty($result)) {
-                            foreach ($result as $poli) { ?>
+                            foreach ($result as $row) { ?>
                                 <div class="col-md-6">
                                     <div class="card shadow-sm">
                                         <div style="position: relative; width: 100%; height: 225px; overflow: hidden;">
-                                            <img src="assets/img/<?= $poli['foto'] ?>" style="width: 100%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="bd-placeholder-img card-img-top" alt="Gambar <?= $poli['nama_poli'] ?>">
+                                            <img src="assets/img/<?= $row['foto'] ?>" style="width: 100%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="bd-placeholder-img card-img-top" alt="Gambar <?= $row['nama_poli'] ?>">
                                         </div>
                                         <div class="card-body">
-                                            <b><?= $poli['nama_poli'] ?></b>
-                                            <p class="card-text"><?= $poli['keterangan'] ?></p>
+                                            <p><b><?= $row['nama_poli'] ?></b></p>
+                                            <b>Nomor ID : </b> <?= $row['id_poli'] ?>
+                                            <p class="card-text"><?= $row['keterangan'] ?></p>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                                <button type="button" class="btn btn-sm btn-outline-success">Edit</button>
-                                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
-                                            </div>
+                                                <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#modaledit<?php echo $row['id'] ?>">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id'] ?>">Hapus</button>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            <?php }
-                        } else { ?>
-                            <div class="col-12">
-                                <p class="text-center">Tidak ada data poliklinik.</p>
-                            </div>
-                        <?php } ?>
+
+                                <!-- Modal Edit-->
+                                <div class="modal fade" id="modaledit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl modal-fullscreen-md-down">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Poliklinik</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="needs-validation" novalidate action="proses/proses_edit_poliklinik.php" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>"> <!-- Tambahkan input hidden untuk ID -->
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="input-group mb-3">
+                                                                <input type="file" class="form-control py-3" id="floatingfoto" placeholder="foto" name="foto">
+                                                                <label class="input-group-text" for="floatingfoto"> Upload Foto</label>
+                                                                <div class="invalid-feedback">
+                                                                    Masukkan Foto
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control" id="floatingIDPoliklinik" placeholder="ID Poliklinik" value="<?php echo $row['id_poli'] ?>" name="id_poli" required>
+                                                                        <label for="floatingIDPoliklinik">ID Poliklinik</label>
+                                                                        <div class="invalid-feedback">
+                                                                            Masukkan ID Poliklinik
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control" id="floatingNamaPoliklinik" placeholder="Nama Poliklinik" name="nama_poli" value="<?php echo $row['nama_poli'] ?>" required>
+                                                                        <label for="floatingNamaPoliklinik">Nama Poliklinik</label>
+                                                                        <div class="invalid-feedback">
+                                                                            Masukkan Nama Poliklinik
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-floating mb-3">
+                                                                <textarea class="form-control" id="floatingKeterangan" style="height: 200px" name="keterangan" required><?php echo $row['keterangan'] ?></textarea>
+                                                                <label for="floatingKeterangan">Keterangan</label>
+                                                                <div class="invalid-feedback">
+                                                                    Masukkan Keterangan
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="edit_poliklinik_validate">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Modal edit-->
+
+
+
+
+                                <!-- Modal delete-->
+                                <div class="modal fade" id="modaldelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-md modal-fullscreen-md-down">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete Data user</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="needs-validation" novalidate action="proses/proses_delete_poliklinik.php" method="POST">
+                                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                                    <div class="col-lg-12">
+                                                        Apakah anda ingin menghapus dokter <b><?php echo $row['nama_poli'] ?></b>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger" name="delete_poliklinik_validate" value="12345">Hapus</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Modal delete-->
+
+
+                        <?php }
+                        } ?>
                     </div>
                 </div>
             </div>
+
+            <div class="col-12">
+                <p class="text-center">Tidak ada data poliklinik.</p>
+            </div>
+
+
         </main>
-
-
-
 
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     </body>
@@ -155,12 +312,10 @@ while ($record = mysqli_fetch_array($query)) {
     </html>
 </div>
 
-
 <footer class="text-body-secondary py-5">
     <div class="container">
         <p class="float-end mb-1">
-            <a href="#">Kembali ke Atas </a>
+            <a href="#">Kembali ke Atas</a>
         </p>
-
     </div>
 </footer>

@@ -443,7 +443,7 @@ while ($record = mysqli_fetch_array($query)) {
 
 
 
-                    <!-- Modal delete-->
+                    
                     <!-- Modal delete-->
                     <div class="modal fade" id="modaldelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md modal-fullscreen-md-down">
@@ -469,7 +469,7 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                     <!-- end Modal delete-->
 
-                    <!-- end Modal delete-->
+                
 
                 <?php } ?>
             <?php } ?>
