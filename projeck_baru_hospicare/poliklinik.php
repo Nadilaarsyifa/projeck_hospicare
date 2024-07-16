@@ -98,6 +98,19 @@ while ($record = mysqli_fetch_array($query)) {
 
     <body>
         <main>
+
+            <section class="py-0 text-right container">
+                <div class="row py-0">
+                    <div class="col-lg-5 col-md-1 ms-auto">
+                        <p class="text-end">
+                            <a href="#" class="btn btn-secondary my-1" style="background-color: rgb(2, 139, 44)">Tambah Poliklinik</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+
             <div class="album py-5 bg-body-tertiary">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -105,10 +118,20 @@ while ($record = mysqli_fetch_array($query)) {
                             foreach ($result as $poli) { ?>
                                 <div class="col-md-6">
                                     <div class="card shadow-sm">
-                                        <img src="<?= $poli['foto'] ?>" class="bd-placeholder-img card-img-top" alt="Gambar <?= $poli['nama_poli'] ?>">
+                                        <div style="position: relative; width: 100%; height: 225px; overflow: hidden;">
+                                            <img src="assets/img/<?= $poli['foto'] ?>" style="width: 100%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="bd-placeholder-img card-img-top" alt="Gambar <?= $poli['nama_poli'] ?>">
+                                        </div>
                                         <div class="card-body">
                                             <b><?= $poli['nama_poli'] ?></b>
                                             <p class="card-text"><?= $poli['keterangan'] ?></p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button" class="btn btn-sm btn-outline-success">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -122,8 +145,22 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
             </div>
         </main>
+
+
+
+
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
     </html>
 </div>
+
+
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Kembali ke Atas </a>
+        </p>
+
+    </div>
+</footer>
