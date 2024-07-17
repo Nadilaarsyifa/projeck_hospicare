@@ -174,10 +174,13 @@ if (!empty($_SESSION['username_hospicare'])) {
                     <label class="form-check-label ms-2" for="flexCheckDefault">
                         Remember me
                     </label>
+
                 </div>
                 <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc" style="background-color: rgb(2, 139, 44)">Login</button>
                 <p class="mt-5 mb-3 text-body-secondary text-center">&copy; 2024–2025</p>
             </form>
+            <p>username : admin@gmail.com</p>
+            <p>password : 12345</p>
         </main>
     </div>
 
