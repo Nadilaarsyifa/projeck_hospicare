@@ -197,6 +197,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                 </div>
 
+
                                 <!-- Modal Edit-->
                                 <div class="modal fade" id="modaledit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
@@ -205,9 +206,9 @@ while ($record = mysqli_fetch_array($query)) {
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Poliklinik</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" action="proses/proses_edit_poliklinik.php">
                                                 <form class="needs-validation" novalidate action="proses/proses_edit_poliklinik.php" method="POST" enctype="multipart/form-data">
-                                                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>"> <!-- Tambahkan input hidden untuk ID -->
+                                                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="input-group mb-3">
@@ -255,7 +256,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="edit_poliklinik_validate">Save</button>
+                                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="edit_validate">Save</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -263,6 +264,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                 </div>
                                 <!-- end Modal edit-->
+
 
 
 

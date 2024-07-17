@@ -6,7 +6,10 @@ $id_poli = isset($_POST['id_poli']) ? htmlentities($_POST['id_poli']) : "";
 $nama_poli = isset($_POST['nama_poli']) ? htmlentities($_POST['nama_poli']) : "";
 $keterangan = isset($_POST['keterangan']) ? htmlentities($_POST['keterangan']) : "";
 
-if (!empty($_POST['edit_poliklinik_validate'])) {
+
+
+$message = "";  // Inisialisasi variabel $message
+if (!empty($_POST['edit_validate'])) {
     $statusupload = 1;
     $target_dir = "../assets/img/";
     $foto_name = "";

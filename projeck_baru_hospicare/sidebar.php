@@ -38,7 +38,7 @@
 
 
                         <li class="nav-item">
-                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis'); ?> href="riwayatmedis"></a>
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarvip'); ?> href="kamarvip"></a>
                         </li>
 
                         <li class="nav-item">
@@ -50,7 +50,7 @@
                                 <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'user') ? 'active link-light' : 'link-dark'; ?>" href="user"><i class="bi bi-person-gear"></i> user</a>
                             </li>
                             <li class="nav-item">
-                                <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'report') ?> href="report"></a>
+                                <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'bangsal') ?> href="bangsal"></a>
                             </li>
                         <?php } ?>
                     </ul>

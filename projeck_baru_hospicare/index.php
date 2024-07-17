@@ -19,8 +19,8 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
 } elseif (isset($_GET['x']) && $_GET['x'] == 'pendaftaran') {
     $page = "pendaftaran.php";
     include "main.php";
-} elseif (isset($_GET['x']) && $_GET['x'] == 'riwayatmedis') {
-    $page = "riwayatmedis.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'kamarvip') {
+    $page = "kamarvip.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip') {
     $page = "kamarsemivip.php";
@@ -40,9 +40,9 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
 } elseif (isset($_GET['x']) && $_GET['x'] == 'informasirs') {
     $page = "informasirs.php";
     include "main.php";
-} elseif (isset($_GET['x']) && $_GET['x'] == 'report') {
+} elseif (isset($_GET['x']) && $_GET['x'] == 'bangsal') {
     if ($_SESSION['level_hospicare'] == 1) {
-        $page = "report.php";
+        $page = "bangsal.php";
         include "main.php";
     } else {
         $page = "beranda.php";

@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kamar VIP</h5>
                         <p class="card-text">Kamar dengan fasilitas sangat baik.</p>
-                        <a href="riwayatmedis" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
+                        <a href="kamarvip" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kamar Bangsal</h5>
                         <p class="card-text">Kamar dengan fasilitas baik.</p>
-                        <a href="report" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
+                        <a href="bangsal" class="btn btn-primary" style="background-color: rgb(2, 139, 44)">Lihat Kamar</a>
                     </div>
                 </div>
             </div>

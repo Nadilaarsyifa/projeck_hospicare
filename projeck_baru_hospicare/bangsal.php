@@ -1,6 +1,6 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_kamarsemivip");
+$query = mysqli_query($conn, "SELECT * FROM tb_bangsal");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -11,7 +11,7 @@ while ($record = mysqli_fetch_array($query)) {
 <div class="col-lg-9 mt-2">
     <div class="card">
         <div class="card-header">
-            <h4> Kamar Semi VIP</h4>
+            <h4> Kamar Bangsal</h4>
         </div>
         <div class="card-body w-100">
             <div class="row">
@@ -24,11 +24,11 @@ while ($record = mysqli_fetch_array($query)) {
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kamar semi VIP</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kamar Bangsal</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_semivip.php" method="POST" enctype="multipart/form-data">
+                            <form class="needs-validation" novalidate action="proses/proses_input_bangsal.php" method="POST" enctype="multipart/form-data">
 
 
                                 <div class="row">
@@ -180,7 +180,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" novalidate action="proses/proses_input_semivip.php" method="POST">
+                                    <form class="needs-validation" novalidate action="proses/proses_input_bangsal.php" method="POST">
                                         <div class="row">
                                             <div class="col-lg-5">
                                                 <div class="input-group mb-3">
@@ -263,7 +263,7 @@ while ($record = mysqli_fetch_array($query)) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate action="proses/proses_edit_semivip.php" method="POST" enctype="multipart/form-data">
+                        <form class="needs-validation" novalidate action="proses/proses_edit_bangsal.php" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
 
@@ -327,7 +327,7 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="edit_semivip_validate" value="12345">Save changes</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="edit_bangsal_validate" value="12345">Save changes</button>
                     </div>
                     </form>
                 </div>
@@ -349,14 +349,14 @@ while ($record = mysqli_fetch_array($query)) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate action="proses/proses_delete_semivip.php" method="POST">
+                    <form class="needs-validation" novalidate action="proses/proses_delete_bangsal.php" method="POST">
                         <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                         <div class="col-lg-12">
                             Apakah anda ingin menghapus kamar No <b><?php echo $row['no_kamar'] ?> </b>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger" name="delete_semivip_validate" value="12345">Hapus</button>
+                            <button type="submit" class="btn btn-danger" name="delete_bangsal_validate" value="12345">Hapus</button>
                         </div>
                     </form>
                 </div>
