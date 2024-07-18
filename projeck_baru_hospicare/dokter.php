@@ -150,7 +150,7 @@ while ($record = mysqli_fetch_array($query)) {
             } else {
             ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="example" class="table table-hover">
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">No</th>
@@ -443,7 +443,7 @@ while ($record = mysqli_fetch_array($query)) {
 
 
 
-                    
+
                     <!-- Modal delete-->
                     <div class="modal fade" id="modaldelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md modal-fullscreen-md-down">
@@ -469,7 +469,20 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                     <!-- end Modal delete-->
 
-                
 
-                <?php } ?>
-            <?php } ?>
+        </div>
+
+    <?php } ?>
+<?php } ?>
+
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+
+
+    });
+</script>

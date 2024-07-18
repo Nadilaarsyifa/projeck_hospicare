@@ -133,7 +133,7 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
             } else {
             ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="example" class="table table-hover">
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">NO</th>

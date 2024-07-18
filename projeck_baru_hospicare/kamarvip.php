@@ -140,7 +140,7 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
             } else {
             ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="example" class="table table-hover" id="example">
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">NO</th>
@@ -387,7 +387,13 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
     </div>
     <!-- end Modal delete-->
 </div>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
 
+
+    });
+</script>
 
 <?php } ?>
 <?php } ?>
