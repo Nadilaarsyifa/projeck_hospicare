@@ -41,6 +41,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -62,6 +63,9 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
+
+
+
 
                                 </div>
                                 <div class="row">
@@ -130,6 +134,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <th scope="col">NO</th>
                                 <th scope="col">Gambar kamar</th>
                                 <th scope="col">No kamar</th>
+
                                 <th scope="col">Nama kamar</th>
                                 <th scope="col">Kapasitas</th>
                                 <th scope="col">Terisi</th>
@@ -147,6 +152,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <th scope="row"><?php echo $no++; ?></th>
                                     <td><img src="assets/img/<?php echo $row['foto']; ?>" style="width: 150px; height: 120px;" alt="..."></td>
                                     <td><?php echo $row['no_kamar']; ?></td>
+
                                     <td><?php echo $row['nama_kamar']; ?></td>
                                     <td><?php echo $row['kapasitas']; ?></td>
                                     <td><?php echo $row['terisi']; ?></td>
@@ -194,6 +200,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     <label for="floatingid"> No kamar</label>
                                                 </div>
 
+
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="form-floating mb-3">
@@ -236,7 +243,9 @@ while ($record = mysqli_fetch_array($query)) {
                                                     <input disabled type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="status_kamar" value="<?php echo $row['status_kamar']; ?>">
                                                     <label for="floatingjadwal"> Status</label>
                                                 </div>
+
                                             </div>
+
                                         </div>
 
                                 </div>
@@ -364,7 +373,7 @@ while ($record = mysqli_fetch_array($query)) {
         </div>
     </div>
     <!-- end Modal delete-->
-
+</div>
 
 
 <?php } ?>

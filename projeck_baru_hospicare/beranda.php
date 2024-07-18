@@ -170,6 +170,7 @@
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -183,25 +184,37 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="bd-placeholder-img" width="100%" height="100%" src="2.png" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <img class="bd-placeholder-img" width="100%" height="100%" src="igd.jpeg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
                         </img>
                         <div class="container">
                             <div class="carousel-caption">
-                                <p>Some representative placeholder content for the second slide of the carousel.</p>
+                                <p>HospiCare berkomitmen untuk memberikan penanganan yang cepat, tepat, dan berkualitas tinggi dalam setiap situasi darurat..</p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="bd-placeholder-img" width="100%" height="100%" src="3.jpeg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <img class="bd-placeholder-img" width="100%" height="100%" src="beranda.jpeg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
                         </img>
                         <div class="container">
                             <div class="carousel-caption text-end">
-                                <p>Some representative placeholder content for the third slide of this carousel.</p>
+                                <p>Hospicare memiliki alat radioterapi versi tertinggi Rumah Sakit Pusat Kanker di Amerika.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-item">
+                        <img class="bd-placeholder-img" width="100%" height="100%" src="beranda2.jpeg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                        </img>
+                        <div class="container">
+                            <div class="carousel-caption text-end">
+                                <p>hospicare membangun sitem modern dimana layanan kesehatan bisa dilakukan dengan kendali sesederhana mungkin.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -220,37 +233,6 @@
 
             <div class="container marketing">
 
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <div class="col-lg-4">
-                        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="4.jpeg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                        </img>
-                        <h2 class="fw-normal">Heading</h2>
-                        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                        </svg>
-                        <h2 class="fw-normal">Heading</h2>
-                        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-                        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-                        </svg>
-                        <h2 class="fw-normal">Heading</h2>
-                        <p>And lastly this, the third column of representative placeholder content.</p>
-                        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                </div><!-- /.row -->
-
 
                 <!-- START THE FEATURETTES -->
 
@@ -258,46 +240,75 @@
 
                 <div class="row featurette">
                     <div class="col-md-7">
-                        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
-                        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+                        <h2 class="featurette-heading fw-normal lh-1">HospiCare<span class="text-body-secondary"></span></h2>
+                        <p class="lead">Hospicare adalah rumah sakit yang berdedikasi untuk memberikan perawatan kesehatan berkualitas tinggi dan komprehensif kepada setiap pasien. Kami mengutamakan keselamatan, kenyamanan, dan kepuasan pasien dalam setiap layanan yang kami berikan</p>
                     </div>
                     <div class="col-md-5">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" /><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                        </svg>
+                        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="logo6.png" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" /><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em"></text>
+                        </img>
                     </div>
                 </div>
+
+                <hr class="featurette-divider">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="assets/img/pendiri.jpeg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                        </img>
+                        <h2 class="fw-normal">Perintis</h2>
+                        <p>Hospicare didirikan oleh Dr. Musliadi pada tahun 2000 dengan visi menyediakan layanan kesehatan yang berkualitas tinggi dan komprehensif untuk semua lapisan masyarakat.</p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="assets/img/raziq.jpeg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                        </img>
+                        <h2 class="fw-normal">Direktur Utama</h2>
+                        <p>Dr. Muhammad Raziq Al ansari Di bawah kepemimpinannya, Hospicare terus berkembang menjadi salah satu rumah sakit terkemuka di wilayah Aceh utara.</p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="assets/img/nadila.jpeg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+                        </img>
+                        <h2 class="fw-normal">Wakil Direktur</h2>
+                        <p>Dr. Nadila Arsyifa Sebagai wakil direktur, ia berperan penting dalam pengembangan dan implementasi program-program kesehatan di Hospicare.</p>
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
 
                 <hr class="featurette-divider">
 
                 <div class="row featurette">
                     <div class="col-md-7 order-md-2">
-                        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
-                        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+                        <h2 class="featurette-heading fw-normal lh-1"> <span class="text-body-secondary"></span></h2>
+                        <p class="lead">Kami berkomitmen untuk selalu memberikan pelayanan terbaik dengan pendekatan yang humanis dan ramah. Dengan selalu mengedepankan prinsip-prinsip etika dan profesionalisme dalam setiap tindakan medis.</p>
                     </div>
                     <div class="col-md-5 order-md-1">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" /><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                        </svg>
+                        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="alamat.jpeg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" /><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em"></text>
+                        </img>
                     </div>
                 </div>
 
                 <hr class="featurette-divider">
-
                 <div class="row featurette">
                     <div class="col-md-7">
-                        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
-                        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+                        <h2 class="featurette-heading fw-normal lh-1">Alamat<span class="text-body-secondary"></span></h2>
+                        <p class="lead">
+                            Hospicare berlokasi di Jalan Sehat Sentosa No. 123, Kelurahan Harmoni, Kecamatan Sehat,
+                            Kota Sehat, Kode Pos 12345
+                        </p>
                     </div>
-                    <div class="col-md-5">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" /><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                        </svg>
+                    <div class="col-md-5 order-md-1">
+                        <!-- Google Maps Embed -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7948.200721550058!2d97.17661618745896!3d5.087469666171294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304787c8b2bee805%3A0xfacca44174abdef0!2sDayah%20terpadu%20madinatuddiniyah%20darul%20kiram!5e0!3m2!1sid!2sid!4v1721271650022!5m2!1sid!2sid" width="400" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
+
 
                 <hr class="featurette-divider">
 
@@ -308,8 +319,8 @@
 
             <!-- FOOTER -->
             <footer class="container">
-                <p class="float-end"><a href="#">Back to top</a></p>
-                <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                <p class="float-end"><a href="#">kembali ke atas</a></p>
+                <p>&copy; 2024–2025 Hospicare Nadila Arsyifa, Inc. &middot; </p>
             </footer>
         </main>
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

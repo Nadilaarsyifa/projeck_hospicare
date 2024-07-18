@@ -15,9 +15,6 @@
                             <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'beranda') || !isset($_GET['x'])) ? 'active link-light' : 'link-dark'; ?>" aria-current="page" href="beranda"><i class="bi bi-house-door"></i> Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasirs') ? 'active link-light' : 'link-dark'; ?>" href="informasirs"><i class="bi bi-building"></i> Informasi Rumah sakit</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasikamar') ? 'active link-light' : 'link-dark'; ?>" href="informasikamar"><i class="bi bi-door-open"></i> Daftar Kamar</a>
                         </li>
                         <li class="nav-item">
@@ -34,15 +31,15 @@
                         <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftar') ? 'active link-light' : 'link-dark'; ?>" href="pendaftar"><i class="bi bi-people"></i> Pasien/Pendaftar</a>
                         </li>
-
-
-
                         <li class="nav-item">
                             <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarvip'); ?> href="kamarvip"></a>
                         </li>
 
                         <li class="nav-item">
                             <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip'); ?> href="kamarsemivip"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasirs') ? 'active link-light' : 'link-dark'; ?>" href="informasirs"><i class="bi bi-building"></i> Report </a>
                         </li>
 
                         <?php if ($hasil['level'] == 1) { ?>
