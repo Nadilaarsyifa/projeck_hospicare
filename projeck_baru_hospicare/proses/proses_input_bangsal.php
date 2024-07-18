@@ -6,7 +6,7 @@ $nama_kamar = isset($_POST['nama_kamar']) ? htmlentities($_POST['nama_kamar']) :
 $kapasitas = isset($_POST['kapasitas']) ? htmlentities($_POST['kapasitas']) : "";
 $terisi = isset($_POST['terisi']) ? htmlentities($_POST['terisi']) : "";
 $status = isset($_POST['status_kamar']) ? htmlentities($_POST['status_kamar']) : "";
-$fasilitas = isset($_POST['fasilitas']) ? htmlentities($_POST['fasilitas']) : "";
+$kategori = isset($_POST['kategori']) ? htmlentities($_POST['kategori']) : "";
 
 
 $message = "";  // Inisialisasi variabel $message
@@ -48,11 +48,11 @@ if (!empty($_POST['input_kamar_validate'])) {
     }
 
     if ($statusupload == 1) {
-        $select = mysqli_query($conn, "SELECT * FROM tb_bangsal WHERE no_kamar = '$no_kamar'");
+        $select = mysqli_query($conn, "SELECT * FROM tbbaru WHERE no_kamar = '$no_kamar'");
         if (mysqli_num_rows($select) > 0) {
             $message = '<script>alert("no kamar yang dimasukkan telah ada"); window.location="../bangsal";</script>';
         } else {
-            $query = mysqli_query($conn, "INSERT INTO tb_bangsal (foto, no_kamar, nama_kamar, kapasitas,terisi, status_kamar, fasilitas) VALUES ('$foto_name','$no_kamar','$nama_kamar','$kapasitas', '$terisi', '$status', '$fasilitas')");
+            $query = mysqli_query($conn, "INSERT INTO tbbaru (foto, no_kamar, nama_kamar, kapasitas,terisi, status_kamar, kategori) VALUES ('$foto_name','$no_kamar','$nama_kamar','$kapasitas', '$terisi', '$status', '$kategori')");
 
             if ($query) {
                 $message = '<script>alert("Data berhasil dimasukkan"); window.location="../bangsal";</script>';

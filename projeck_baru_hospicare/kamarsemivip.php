@@ -1,11 +1,14 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_kamarsemivip");
+$query = mysqli_query($conn, "SELECT * FROM tbbaru
+LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tbbaru.kategori where kode='ll'");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 
+$select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where kode='ll'");
 ?>
+
 
 
 <div class="col-lg-9 mt-2">
@@ -98,10 +101,17 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingUsername" placeholder="your name" name="fasilitas" required>
-                                            <label for="floatingUsername"> Fasilitas</label>
+                                            <select class="form-select" aria-label="Default select example" name="kategori" required>
+                                                <option selected hidden value="">Pilih kategori kamar</option>
+                                                <?php
+                                                foreach ($select_kategori as $value) {
+                                                    echo '<option value="' . $value['kategori'] . '">' . $value['kategori'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                            <label for="floatingjeniskelamin">kategori kamar</label>
                                             <div class="invalid-feedback">
-                                                Masukkan Fasilitas
+                                                Pilih kategori kamar
                                             </div>
                                         </div>
                                     </div>

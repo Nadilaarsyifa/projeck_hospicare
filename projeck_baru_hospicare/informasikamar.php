@@ -7,6 +7,7 @@ while ($record = mysqli_fetch_array($query)) {
 
 ?>
 
+
 <div class="col-lg-9 mt-2">
 
     <div class="container mt-5">
@@ -48,7 +49,7 @@ while ($record = mysqli_fetch_array($query)) {
     <hr class="featurette-divider">
     <div class="card">
         <div class="card-header">
-            <h4> Tabel kelas Kamar</h4>
+            <h4> Tabel fasilitas kamar</h4>
         </div>
         <div class="card-body w-100">
             <div class="row">
@@ -69,20 +70,36 @@ while ($record = mysqli_fetch_array($query)) {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingid" placeholder="your id" name="id_kelas" required>
-                                            <label for="floatingid"> ID kelas</label>
+                                            <input type="text" class="form-control" id="floatingid" placeholder="your id" name="kategori" required>
+                                            <label for="floatingid"> kategori </label>
                                             <div class="invalid-feedback">
-                                                Masukkan ID kelas
+                                                Masukkan kategori
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="keterangan" required>
-                                            <label for="floatingjadwal"> Keterangan </label>
+                                            <input type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="fasilitas" required>
+                                            <label for="floatingjadwal"> fasilitas </label>
                                             <div class="invalid-feedback">
-                                                Masukkan Keterangan
+                                                Masukkan fasilitas
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="floatingLevel" aria-label="Default select example" name="kode" required>
+                                                <option selected hidden value="">Pilih kode</option>
+                                                <option value="l">l</option>
+                                                <option value="ll">ll</option>
+                                                <option value="lll">lll</option>
+                                            </select>
+                                            <label for="floatingLevel">kode kelas</label>
+                                            <div class="invalid-feedback">
+                                                Pilih kode kamar
                                             </div>
                                         </div>
                                     </div>
@@ -109,8 +126,8 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">NO</th>
-                                <th scope="col">ID kelas</th>
-                                <th scope="col">Keterangan</th>
+                                <th scope="col">kategori</th>
+                                <th scope="col">fasilitas</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -119,14 +136,15 @@ while ($record = mysqli_fetch_array($query)) {
                             $no = 1;
                             foreach ($result as $row) {
                             ?>
+
                                 <tr class="text-nowrap">
                                     <th scope="row"><?php echo $no++; ?></th>
-                                    <td><?php echo $row['id_kelas']; ?></td>
-                                    <td><?php echo $row['keterangan']; ?></td>
+                                    <td><?php echo $row['kategori']; ?></td>
+                                    <td><?php echo $row['fasilitas']; ?></td>
 
                                     <td>
                                         <div class="d-flex">
-                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id_kelas'] ?>"><i class=" bi bi-trash"></i></button>
+                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['kategori'] ?>"><i class=" bi bi-trash"></i></button>
 
                                         </div>
                                     </td>
@@ -141,18 +159,18 @@ while ($record = mysqli_fetch_array($query)) {
                 <?php foreach ($result as $row) { ?>
 
                     <!-- Modal delete-->
-                    <div class="modal fade" id="modaldelete<?php echo $row['id_kelas'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modaldelete<?php echo $row['kategori'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete Data user</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete Data kategori</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form class="needs-validation" novalidate action="proses/proses_delete_kelas.php" method="POST">
-                                        <input type="hidden" value="<?php echo $row['id_kelas'] ?>" name="id_kelas">
+                                        <input type="hidden" value="<?php echo $row['kategori'] ?>" name="kategori">
                                         <div class="col-lg-12">
-                                            Apakah anda ingin menghapus Kelas <b><?php echo $row['id_kelas'] ?> </b>
+                                            Apakah anda ingin menghapus kategori <b><?php echo $row['kategori'] ?> </b>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -171,3 +189,5 @@ while ($record = mysqli_fetch_array($query)) {
 
 
         </div>
+    </div>
+</div>
