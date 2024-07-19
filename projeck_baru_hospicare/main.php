@@ -29,6 +29,7 @@ $hasil = mysqli_fetch_array($query);
             $('#example').DataTable();
         });
     </script>
+
 </head>
 
 <body>

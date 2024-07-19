@@ -39,6 +39,12 @@
                             <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip'); ?> href="kamarsemivip"></a>
                         </li>
                         <li class="nav-item">
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'daftarinap'); ?> href="daftarinap"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'daftarjalan'); ?> href="daftarjalan"></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'informasirs') ? 'active link-light' : 'link-dark'; ?>" href="informasirs"><i class="bi bi-building"></i> Report </a>
                         </li>
 
