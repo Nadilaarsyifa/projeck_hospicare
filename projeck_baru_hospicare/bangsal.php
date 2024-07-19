@@ -139,6 +139,7 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                                 <th scope="col">NO</th>
                                 <th scope="col">Gambar kamar</th>
                                 <th scope="col">No kamar</th>
+                                <th scope="col">Kategori Bangsal</th>
                                 <th scope="col">Nama kamar</th>
                                 <th scope="col">Kapasitas</th>
                                 <th scope="col">Terisi</th>
@@ -154,8 +155,9 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                             ?>
                                 <tr class="text-nowrap">
                                     <th scope="row"><?php echo $no++; ?></th>
-                                    <td><img src="assets/img/<?php echo $row['foto']; ?>" style="width: 150px; height: 120px;" alt="..."></td>
+                                    <td><img src="assets/img/<?php echo $row['foto']; ?>" style="width: 200px; height: 170px;" alt="..."></td>
                                     <td><?php echo $row['no_kamar']; ?></td>
+                                    <td><?php echo $row['kategori']; ?></td>
                                     <td><?php echo $row['nama_kamar']; ?></td>
                                     <td><?php echo $row['kapasitas']; ?></td>
                                     <td><?php echo $row['terisi']; ?></td>
@@ -238,7 +240,7 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                                         <div class="row">
                                             <div class="col-lg-5">
                                                 <div class="form-floating">
-                                                    <textarea disabled class="form-control" id="floatingketeranganf" style="height: 100px" name="fasilitas"><?php echo $row['fasilitas']; ?></textarea>
+                                                    <textarea disabled class="form-control" id="floatingketeranganf" style="height: 130px" name="fasilitas"><?php echo $row['fasilitas']; ?></textarea>
                                                     <label for="floatingketerangan">Fasilitas</label>
                                                 </div>
                                             </div>
@@ -246,6 +248,14 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                                                 <div class="form-floating mb-3">
                                                     <input disabled type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="status_kamar" value="<?php echo $row['status_kamar']; ?>">
                                                     <label for="floatingjadwal"> Status</label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-floating mb-3">
+                                                            <input disabled type="text" class="form-control" id="floatingkategori" placeholder="your name" name="kategori" value="<?php echo $row['kategori']; ?>">
+                                                            <label for="floatingkategori"> Kategori Bansal</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,7 +334,7 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                             <div class="row">
                                 <div class="col-lg-5">
                                     <div class="form-floating">
-                                        <textarea disabled class="form-control" id="floatingketeranganf" style="height: 100px" name="fasilitas"><?php echo $row['fasilitas']; ?></textarea>
+                                        <textarea disabled class="form-control" id="floatingketeranganf" style="height: 130px" name="fasilitas"><?php echo $row['fasilitas']; ?></textarea>
                                         <label for="floatingketerangan">Fasilitas</label>
                                     </div>
                                 </div>
@@ -332,6 +342,14 @@ $select_kategori = mysqli_query($conn, "SELECT kategori from tb_kelaskamar where
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingjadwal" placeholder="jadwal praktik" name="status_kamar" value="<?php echo $row['status_kamar']; ?>">
                                         <label for="floatingjadwal"> Status</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-floating mb-3">
+                                                <input disabled type="text" class="form-control" id="floatingkategori" placeholder="your name" name="kategori" value="<?php echo $row['kategori']; ?>">
+                                                <label for="floatingkategori"> Kategori Bansal</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -19,6 +19,12 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
 } elseif (isset($_GET['x']) && $_GET['x'] == 'pendaftaran') {
     $page = "pendaftaran.php";
     include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'detailpendaftaran') {
+    $page = "detailpendaftaran.php";
+    include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'detailpendaftaran2') {
+    $page = "detailpendaftaran2.php";
+    include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'kamarvip') {
     $page = "kamarvip.php";
     include "main.php";

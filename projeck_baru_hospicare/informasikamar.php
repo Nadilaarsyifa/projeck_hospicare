@@ -122,7 +122,7 @@ while ($record = mysqli_fetch_array($query)) {
             } else {
             ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="example" class="table table-hover">
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">NO</th>
