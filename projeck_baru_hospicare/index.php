@@ -28,6 +28,9 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
 } elseif (isset($_GET['x']) && $_GET['x'] == 'kamarvip') {
     $page = "kamarvip.php";
     include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'jadwalanda') {
+    $page = "jadwalanda.php";
+    include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'kamarsemivip') {
     $page = "kamarsemivip.php";
     include "main.php";

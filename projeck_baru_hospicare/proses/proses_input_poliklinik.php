@@ -19,16 +19,19 @@ if (isset($_POST['input_poliklinik_validate'])) {
 
         $cek = getimagesize($_FILES['foto']['tmp_name']);
         if ($cek === false) {
-            $message =  '<script>alert("Ini bukan file gambar"); window.location="../poliklinik";</script>';
-            $statusupload = 0;
+            $message = '<script>alert("Ini bukan file gambar"); window.location="../poliklinik";</script>';
+            echo $message;
+            return; // Menghentikan eksekusi lebih lanjut dari blok ini
         } else {
             if ($_FILES['foto']['size'] > 50000000) { // 50MB
                 $message = '<script>alert("File foto yang diupload terlalu besar"); window.location="../poliklinik";</script>';
-                $statusupload = 0;
+                echo $message;
+                return; // Menghentikan eksekusi lebih lanjut dari blok ini
             } else {
                 if ($file_extension != "jpeg" && $file_extension != "png" && $file_extension != "jpg" && $file_extension != "gif") {
                     $message = '<script>alert("Maaf, hanya diperbolehkan gambar yang memiliki format jpeg, png, jpg, dan gif"); window.location="../poliklinik";</script>';
-                    $statusupload = 0;
+                    echo $message;
+                    return; // Menghentikan eksekusi lebih lanjut dari blok ini
                 }
             }
         }
@@ -38,7 +41,8 @@ if (isset($_POST['input_poliklinik_validate'])) {
                 $foto_name = $unique_filename;
             } else {
                 $message = '<script>alert("Maaf terjadi kesalahan file tidak dapat di upload"); window.location="../poliklinik";</script>';
-                $statusupload = 0;
+                echo $message;
+                return; // Menghentikan eksekusi lebih lanjut dari blok ini
             }
         }
     }
@@ -47,13 +51,19 @@ if (isset($_POST['input_poliklinik_validate'])) {
         $select = mysqli_query($conn, "SELECT * FROM tb_poliklinik WHERE id_poli = '$id_poli'");
         if (mysqli_num_rows($select) > 0) {
             $message = '<script>alert("ID poliklinik yang dimasukkan telah ada"); window.location="../poliklinik";</script>';
+            echo $message;
+            return; // Menghentikan eksekusi lebih lanjut dari blok ini
         } else {
             $query = mysqli_query($conn, "INSERT INTO tb_poliklinik (foto, id_poli, nama_poli, keterangan) VALUES ('$foto_name', '$id_poli', '$nama_poli','$keterangan')");
 
             if ($query) {
                 $message = '<script>alert("Data berhasil dimasukkan"); window.location="../poliklinik";</script>';
+                echo $message;
+                return; // Menghentikan eksekusi lebih lanjut dari blok ini
             } else {
                 $message = '<script>alert("Data gagal dimasukkan"); window.location="../poliklinik";</script>';
+                echo $message;
+                return; // Menghentikan eksekusi lebih lanjut dari blok ini
             }
         }
     }

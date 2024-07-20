@@ -1,8 +1,8 @@
 <?php
 include "proses/connect.php";
-
 $query = mysqli_query($conn, "SELECT * FROM tb_pendaftaran
-LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr");
+LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
+LEFT JOIN tb_user ON tb_pendaftaran.pengguna = tb_user.id");
 
 $result = [];
 while ($record = mysqli_fetch_array($query)) {
@@ -12,6 +12,7 @@ while ($record = mysqli_fetch_array($query)) {
 $select_kategori = mysqli_query($conn, "SELECT * FROM tb_kelaskamar");
 
 ?>
+
 
 
 <div class="col-lg-9 mt-2">
@@ -26,7 +27,9 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_kelaskamar");
                     </div>
                     <div class="card-body">
                         <form id="daftarForm" class="needs-validation" novalidate action="proses/proses_input_daftarinap.php" method="POST" enctype="multipart/form-data">
+
                             <input type="hidden" name="input_pendaftar_validate" value="1">
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">
@@ -102,10 +105,12 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_kelaskamar");
                                 </div>
 
                             </div>
-                            <button type="button" id="openConfirmModal" class="btn btn-primary">Daftar</button>
-                            <em>
-                                <p>Pendaftaran Anda akan dibatalkan jika Anda tidak datang ke rumah sakit dalam waktu 5 jam setelah pendaftaran disetujui. Terima kasih atas pengertiannya.</p>
-                            </em>
+                            <button type="button" id="openConfirmModal" class="btn btn-primary"> Daftar </button>
+
+                            <hr>
+                            <p style="font-size: small;"> <em> Untuk rawat Inap pendaftaran Anda akan dibatalkan jika Anda tidak datang ke rumah sakit dalam waktu 5 jam setelah pendaftaran disetujui. Terima kasih atas pengertiannya. </em>
+                            </p>
+
                         </form>
                     </div>
                 </div>

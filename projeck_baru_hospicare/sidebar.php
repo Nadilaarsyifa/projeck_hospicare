@@ -29,7 +29,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftar') ? 'active link-light' : 'link-dark'; ?>" href="pendaftar"><i class="bi bi-people"></i> Pasien/Pendaftar</a>
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pendaftar') ? 'active link-light' : 'link-dark'; ?>" href="pendaftar"><i class="bi bi-people"></i> Pendaftar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'jadwalanda') ? 'active link-light' : 'link-dark'; ?>" href="jadwalanda"><i class="bi bi-people"></i> Aktivitas </a>
                         </li>
                         <li class="nav-item">
                             <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'kamarvip'); ?> href="kamarvip"></a>
@@ -55,6 +58,7 @@
                             <li class="nav-item">
                                 <a <?php echo (isset($_GET['x']) && $_GET['x'] == 'bangsal') ?> href="bangsal"></a>
                             </li>
+
                         <?php } ?>
                     </ul>
                 </div>

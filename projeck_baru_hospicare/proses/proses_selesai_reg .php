@@ -20,17 +20,18 @@ $waktu = isset($_POST['waktu']) ? htmlentities($_POST['waktu']) : "";
 $message = "";  // Inisialisasi variabel $message
 
 
-if (!empty($_POST['edit_reg_validate'])) {
+if (!empty($_POST['selesai_reg_validate'])) {
     $statusupload = 1;
 
     if ($statusupload == 1) {
         // Memperbaiki query update
-        $query = mysqli_query($conn, "UPDATE tb_pendaftaran SET  feedback_adm='$feedback_adm', status=1 WHERE id_reg='$id_reg'");
+        $query = mysqli_query($conn, "UPDATE tb_selesai SET  feedback_adm='$feedback_adm', status=2 WHERE id_reg='$id_reg'");
         if ($query) {
-            $message = '<script>alert("Berhasil menerima pendaftaran dari pendaftar"); window.location="../pendaftar";</script>';
+            $message = '<script>alert("registrasi selesai"); window.location="../pendaftar";</script>';
         } else {
-            $message = '<script>alert("gagal menerima pendaftaran dari pendaftar"); window.location="../pendaftar";</script>';
+            $message = '<script>alert("gagal menyelesaikan registrasi"); window.location="../pendaftar";</script>';
         }
     }
 }
 echo $message;
+
