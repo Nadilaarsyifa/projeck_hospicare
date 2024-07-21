@@ -178,7 +178,8 @@ if (!empty($_SESSION['username_hospicare'])) {
                 <button class="btn btn-primary w-100 py-1" type="submit" name="submit_validate" value="abc" style="background-color: rgb(2, 139, 44)">Login</button>
                 <p class="mt-3 mb-3 text-body-secondary text-center">&copy; 2024–2025</p>
             </form>
-            <p class="mt-3 text-center" style="font-size: small;">Belum memiliki akun? <a href="singin.php">sign in di sini</a></p>
+            <p class="mt-3 text-center">Belum memiliki akun? <a href="singin.php">sign in di sini</a></p>
+            <hr>
             <p>username : admin@gmail.com</p>
             <p>password : 12345</p>
 

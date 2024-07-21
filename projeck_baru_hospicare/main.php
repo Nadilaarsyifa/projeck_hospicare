@@ -8,6 +8,9 @@ $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[
 $hasil = mysqli_fetch_array($query);
 
 
+$query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_hospicare]' ");
+$nadila = mysqli_fetch_array($query);
+
 ?>
 
 <!doctype html>

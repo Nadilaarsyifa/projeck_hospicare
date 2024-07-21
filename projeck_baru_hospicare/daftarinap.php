@@ -15,7 +15,7 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_kelaskamar");
 
 
 
-<div class="col-lg-9 mt-2">
+<div class="col-lg-9 mt-2" style="height: 700px;">
     <div class="card-body w-100">
         <div class="row">
 
@@ -29,7 +29,15 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_kelaskamar");
                         <form id="daftarForm" class="needs-validation" novalidate action="proses/proses_input_daftarinap.php" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" name="input_pendaftar_validate" value="1">
-
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control" id="floatingnik" placeholder="1112345xxxxxx" name="pengguna" required>
+                                        <label for="floatingnik">ID Username (lihat profil)</label>
+                                        <div class="invalid-feedback">Masukkan Id</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">

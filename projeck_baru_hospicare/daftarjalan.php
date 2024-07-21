@@ -14,7 +14,7 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_poliklinik");
 ?>
 
 
-<div class="col-lg-9 mt-2">
+<div class="col-lg-9 mt-2" style="height: 700px;">
     <div class="card-body w-100">
         <div class="row">
 
@@ -24,10 +24,26 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_poliklinik");
                     <div class="card-header">
                         <b> Pendaftaran Rawat Inap </b>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="height: 700px;">
                         <form id="daftarForm" class="needs-validation" novalidate action="proses/proses_input_daftarjalan.php" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" name="input_pendaftar_validate" value="1">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control" id="floatingnik" placeholder="1112345xxxxxx" name="pengguna" required>
+                                        <label for="floatingnik">ID Username (lihat profil)</label>
+                                        <div class="invalid-feedback">Masukkan Id</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="date" class="form-control" id="floatingtgllahir" name="rencana_jannji_temu" required>
+                                        <label for="floatingtgllahir">Tgl temu</label>
+                                        <div class="invalid-feedback">Masukkan janji temu</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">
@@ -113,46 +129,49 @@ $select_kategori = mysqli_query($conn, "SELECT * FROM tb_poliklinik");
                     </div>
                 </div>
             </div>
-            <!-- End Form Pendaftaran -->
+        </div>
+    </div>
+
+    <!-- End Form Pendaftaran -->
 
 
-            <!-- Modal Konfirmasi -->
-            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pendaftaran</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Apakah Anda yakin ingin melakukan pendaftaran dengan data-data yang Anda masukkan atau cek ulang data?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cek Ulang</button>
-                            <button type="button" id="confirmSubmit" class="btn btn-primary">Ya, Daftar</button>
-                        </div>
-                    </div>
+    <!-- Modal Konfirmasi -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pendaftaran</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin melakukan pendaftaran dengan data-data yang Anda masukkan atau cek ulang data?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cek Ulang</button>
+                    <button type="button" id="confirmSubmit" class="btn btn-primary">Ya, Daftar</button>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const form = document.getElementById('daftarForm');
-                    const openConfirmModalBtn = document.getElementById('openConfirmModal');
-                    const confirmBtn = document.getElementById('confirmSubmit');
-                    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('daftarForm');
+            const openConfirmModalBtn = document.getElementById('openConfirmModal');
+            const confirmBtn = document.getElementById('confirmSubmit');
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
 
-                    openConfirmModalBtn.addEventListener('click', function() {
-                        // Validasi form sebelum membuka modal
-                        if (form.checkValidity()) {
-                            modal.show();
-                        } else {
-                            form.reportValidity(); // Tampilkan pesan validasi
-                        }
-                    });
+            openConfirmModalBtn.addEventListener('click', function() {
+                // Validasi form sebelum membuka modal
+                if (form.checkValidity()) {
+                    modal.show();
+                } else {
+                    form.reportValidity(); // Tampilkan pesan validasi
+                }
+            });
 
-                    confirmBtn.addEventListener('click', function() {
-                        form.submit(); // Submit form jika tombol konfirmasi ditekan
-                    });
-                });
-            </script>
+            confirmBtn.addEventListener('click', function() {
+                form.submit(); // Submit form jika tombol konfirmasi ditekan
+            });
+        });
+    </script>

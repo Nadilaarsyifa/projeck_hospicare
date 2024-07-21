@@ -25,7 +25,7 @@ if (!empty($_POST['aktif_reg_validate'])) {
 
     if ($statusupload == 1) {
         // Memperbaiki query update
-        $query = mysqli_query($conn, "UPDATE tb_pendaftaran SET  status=1 WHERE id_reg='$id_reg'");
+        $query = mysqli_query($conn, "UPDATE tb_pendaftaran SET  status=2 WHERE id_reg='$id_reg'");
         if ($query) {
             $message = '<script>alert("Berhasil  menyelesaikan registrasi"); window.location="../pendaftar";</script>';
         } else {

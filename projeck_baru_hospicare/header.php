@@ -99,7 +99,7 @@ $record = mysqli_fetch_array($query);
 
 
 
-<!-- Modal ubah password-->
+<!-- Modal ubah profil-->
 <div class="modal fade" id="modalubahprofil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-fullscreen-md-down">
         <div class="modal-content">
@@ -121,11 +121,29 @@ $record = mysqli_fetch_array($query);
                         </div>
                         <div class="col-lg-6">
                             <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="floatingnama" name="nama" required value="<?php echo $record['id'] ?>">
+                                <label for="floatingnama">Id Username</label>
+                                <div class="invalid-feedback">
+                                    Masukkan Id username
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingnama" name="nama" required value="<?php echo $record['nama'] ?>">
                                 <label for="floatingnama">Nama</label>
                                 <div class="invalid-feedback">
                                     Masukkan Nama
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="floatingAlamat" style="height: 100px" name="alamat"><?php echo $record['alamat'] ?></textarea>
+                                <label for="floatingAlamat">Alamat</label>
                             </div>
                         </div>
                     </div>
@@ -137,12 +155,6 @@ $record = mysqli_fetch_array($query);
                                 <div class="invalid-feedback">
                                     Masukkan No HP
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-floating">
-                                <textarea class="form-control" id="floatingAlamat" style="height: 100px" name="alamat"><?php echo $record['alamat'] ?></textarea>
-                                <label for="floatingAlamat">Alamat</label>
                             </div>
                         </div>
                     </div>

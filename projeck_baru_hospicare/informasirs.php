@@ -6,6 +6,7 @@ LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
 LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna
 LEFT JOIN tb_pembatalan ON tb_pembatalan.id_pendaftaran = tb_pendaftaran.id_reg
  where status='2'");
+ 
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }

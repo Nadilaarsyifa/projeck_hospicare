@@ -5,7 +5,7 @@ LEFT JOIN tb_poliklinik ON tb_poliklinik.id = tb_pendaftaran.nama_poli
 LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
 LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna
 LEFT JOIN tb_pembatalan ON tb_pembatalan.id_pendaftaran = tb_pendaftaran.id_reg
- where username = '$_SESSION[username_hospicare]'");
+ where username = '$_SESSION[username_hospicare]' ORDER BY waktu DESC");
 
 $rawat_jalan = [];
 $rawat_inap = [];
@@ -61,7 +61,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                 } elseif ($row['status_selesai'] == 3) {
                                                     echo "<span class= 'badge text-bg-danger'>Dibatalkan</span>";
                                                 } elseif ($row['status'] == 0) {
-                                                    echo "<span class= 'badge text-bg-warning'>Masuk</span>";
+                                                    echo "<span class= 'badge text-bg-warning'>Masuk Antrian</span>";
                                                 }
                                                 ?></td>
 
@@ -131,7 +131,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                 } elseif ($row['status'] == 3) {
                                                     echo "<span class= 'badge text-bg-danger'>Dibatalkan</span>";
                                                 } elseif ($row['status'] == 0) {
-                                                    echo "<span class= 'badge text-bg-warning'>di terima</span>";
+                                                    echo "<span class= 'badge text-bg-warning'>Masuk Antrian</span>";
                                                 }
                                                 ?></td>
                                             <td><?php echo $row['waktu']; ?></td>

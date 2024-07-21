@@ -10,6 +10,7 @@ $nohp_pas = isset($_POST['nohp_pas']) ? htmlentities($_POST['nohp_pas']) : "";
 $rencana_janjitemu = isset($_POST['rencana_janji_temu']) ? htmlentities($_POST['rencana_janji_temu']) : "";
 $nama_poli = isset($_POST['id']) ? htmlentities($_POST['id']) : "";
 $jenis_pelayanan = isset($_POST['jenis_pelayanan']) ? htmlentities($_POST['jenis_pelayanan']) : "";
+$pengguna = isset($_POST['pengguna']) ? htmlentities($_POST['pengguna']) : "";
 
 $message = "";  // Inisialisasi variabel $message
 
@@ -20,8 +21,8 @@ if (isset($_POST['input_pendaftar_validate']) && $_POST['input_pendaftar_validat
         $message = '<script>alert("Data pasien dengan NIK tersebut sudah ada"); window.location="../daftarjalan";</script>';
     } else {
         // Query untuk memasukkan data ke database
-        $query = "INSERT INTO tb_pendaftaran (nik, nama_pasien, tgl_lahir, jns_kelamin, alamat_pasien, nohp_pas, rencana_janji_temu, nama_poli, jenis_pelayanan ) 
-                  VALUES ('$nik', '$nama_pasien', '$tgl_lahir', '$jns_kelamin', '$alamat_pasien', '$nohp_pas', '$rencana_janjitemu', '$nama_poli','$jenis_pelayanan')";
+        $query = "INSERT INTO tb_pendaftaran (nik, nama_pasien, tgl_lahir, jns_kelamin, alamat_pasien, nohp_pas, rencana_janji_temu, nama_poli, jenis_pelayanan, pengguna) 
+                  VALUES ('$nik', '$nama_pasien', '$tgl_lahir', '$jns_kelamin', '$alamat_pasien', '$nohp_pas', '$rencana_janjitemu', '$nama_poli','$jenis_pelayanan','$pengguna')";
 
         $result = mysqli_query($conn, $query);
         if ($result) {
