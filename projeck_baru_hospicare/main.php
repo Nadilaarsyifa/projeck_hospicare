@@ -32,7 +32,7 @@ $hasil = mysqli_fetch_array($query);
 
 </head>
 
-<body >
+<body>
     <!--- Header --->
     <?php include "header.php"; ?>
     <!--- end Header --->

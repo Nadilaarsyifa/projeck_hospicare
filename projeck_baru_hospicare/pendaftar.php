@@ -3,7 +3,8 @@ include "proses/connect.php";
 $query = mysqli_query($conn, "SELECT * FROM tb_pendaftaran
 LEFT JOIN tb_poliklinik ON tb_poliklinik.id = tb_pendaftaran.nama_poli
 LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
-LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna");
+LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna
+LEFT JOIN tb_pembatalan ON tb_pembatalan.id_pendaftaran = tb_pendaftaran.id_reg ORDER BY waktu DESC");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -35,8 +36,8 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">No</th>
-                                <th scope="col"> status</th>
-                                <th scope="col"> Waktu Reg</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Waktu Reg</th>
                                 <th scope="col">Nomor Reg</th>
                                 <th scope="col">Jenis Pelayanan</th>
                                 <th scope="col">No NIK</th>
@@ -45,12 +46,11 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                                 <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Alamat</th>
                                 <th scope="col">No HP</th>
-                                <th scope="col">kategori kamar</th>
+                                <th scope="col">Kategori Kamar</th>
                                 <th scope="col">Poliklinik</th>
                                 <th scope="col">Janji Temu</th>
                                 <th scope="col">Informasi Untuk Pendaftar</th>
                                 <th scope="col">Aksi</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -60,12 +60,19 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                             ?>
                                 <tr class="text-nowrap">
                                     <th scope="row"><?php echo $no++; ?></th>
-                                    <td><?php if ($row['status'] == 1) {
-                                            echo "<span class= 'badge text-bg-success'>Aktif</span>";
+                                    <td>
+                                        <?php
+                                        if ($row['status'] == 1) {
+                                            echo "<span class='badge text-bg-success'>Aktif</span>";
                                         } elseif ($row['status'] == 2) {
-                                            echo "<span class= 'badge text-bg-danger'>Selesai</span>";
+                                            echo "<span class='badge text-bg-danger'>Selesai</span>";
+                                        } elseif ($row['status'] == 3) {
+                                            echo "<span class='badge text-bg-danger'>Dibatalkan</span>";
+                                        } elseif ($row['status'] == 0) {
+                                            echo "<span class='badge text-bg-warning'>Masuk</span>";
                                         }
-                                        ?></td>
+                                        ?>
+                                    </td>
                                     <td><?php echo $row['waktu']; ?></td>
                                     <td><?php echo $row['id_reg']; ?></td>
                                     <td><?php echo $row['jenis_pelayanan']; ?></td>
@@ -81,15 +88,21 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                                     <td><?php echo $row['feedback_adm']; ?></td>
                                     <td>
                                         <div class="d-flex">
-                                            <button class="<?php echo (!empty($row['status'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-primary btn-sm me-1"; ?>" onclick="showModal(<?php echo $row['id_reg']; ?>, '<?php echo $row['jenis_pelayanan']; ?>')">
-                                                Terima </i>
+                                            <?php
+                                            $disabledClass = (!empty($row['status_selesai'])) ? "btn btn-secondary btn-sm me-1 disabled" : "";
+                                            ?>
+
+                                            <button class="<?php echo (!empty($row['status']) || !empty($row['status_selesai'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-primary btn-sm me-1"; ?>" onclick="showModal(<?php echo $row['id_reg']; ?>, '<?php echo $row['jenis_pelayanan']; ?>')" <?php echo $disabledClass; ?>>
+                                                Terima
                                             </button>
-                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id_reg'] ?>"><i class=" bi bi-trash"></i></button>
 
+                                            <button class="<?php echo (!empty($row['status_selesai'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-danger btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id_reg'] ?>" <?php echo $disabledClass; ?>>
+                                                Batalkan
+                                            </button>
 
-
-                                            <button class="<?php echo (empty($row['feedback_adm']) || $row['status'] != 1) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-success btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#nonaktif<?php echo $row['id_reg'] ?>"> selesai </button>
-
+                                            <button class="<?php echo (empty($row['status']) || $row['status'] != 1 || !empty($row['status_selesai'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-success btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#nonaktif<?php echo $row['id_reg'] ?>" <?php echo $disabledClass; ?>>
+                                                Selesai
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,6 +112,7 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                         </tbody>
                     </table>
                 </div>
+
 
                 <?php foreach ($result as $row) { ?>
 
@@ -353,7 +367,7 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" novalidate action="proses/proses_selesai_reg .php" method="POST" enctype="multipart/form-data">
+                                    <form class="needs-validation" novalidate action="proses/proses_aktif_reg.php" method="POST" enctype="multipart/form-data">
 
                                         <input type="hidden" value="<?php echo $row['id_reg'] ?>" name="id_reg">
 
@@ -390,7 +404,7 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="selesai_reg_validate" value="12345">Selesaikan </button>
+                                            <button type="submit" class="btn btn-primary" style="background-color: rgb(2, 139, 44)" name="aktif_reg_validate" value="12345">Selesaikan </button>
                                         </div>
                                     </form>
                                 </div>
@@ -407,30 +421,89 @@ if ($row = mysqli_fetch_array($hari_terlewat_query)) {
     <!-- end Modal edit-->
 
 
-    <!-- Modal delete-->
+    <!-- Modal batatalkan-->
+
+
     <div class="modal fade" id="modaldelete<?php echo $row['id_reg'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-fullscreen-md-down">
+        <div class="modal-dialog modal-xl modal-fullscreen-md-down">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete Data user</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Membatalkan Registrasi</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate action="proses/proses_delete_reg.php" method="POST">
+                    <form class="needs-validation" novalidate action="proses/proses_selesai_reg .php" method="POST" enctype="multipart/form-data">
+
                         <input type="hidden" value="<?php echo $row['id_reg'] ?>" name="id_reg">
-                        <div class="col-lg-12">
-                            Apakah anda ingin menghapus Registrasi nomor <b><?php echo $row['id_reg'] ?></b>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="floatingUsername1" placeholder="your name" name="id_pendaftaran" value="<?php echo $row['id_reg'] ?>" readonly>
+                                    <label for="floatingUsername">nomor Registrasi</label>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingid" placeholder="your id" name="waktu" value="<?php echo $row['waktu']; ?>" readonly>
+                                    <label for="floatingid1">Waktu Registrasi</label>
+                                </div>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingid" placeholder="your id" name="jenis_pelayanan" value="<?php echo $row['jenis_pelayanan'] ?>" readonly>
+                                    <label for="floatingid1">jenis pelayanan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingdays" placeholder="days passed" value="Tercatat sudah <?php echo $selisih_hari ?> hari setelah registrasi diterima" readonly>
+                                    <label for="floatingdays"> jumlah hari </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="floatingketeranganf" style="height: 130px" name="keterangan_selesai"></textarea>
+                                        <label for="floatingketerangan">Alasan kami membatalkannya</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-floating mb-3">
+                                    <input type="hidden" class="form-control" id="floatingtgllahir" name="status_selesai" value="3" readonly>
+                                    <label for="floatingtgllahir"></label>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger" name="delete_reg_validate" value="12345">Hapus</button>
+                            <button type="submit" class="btn btn-danger" name="batalkan_reg_validate" value="12345"> Batalkan </button>
                         </div>
                     </form>
                 </div>
             </div>
+
+
+
+
+
         </div>
     </div>
-    <!-- end Modal delete-->
+</div>
+</div>
+
+<!-- end Modal batalkan-->
 
 
 </div>

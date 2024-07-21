@@ -3,7 +3,9 @@ include "proses/connect.php";
 $query = mysqli_query($conn, "SELECT * FROM tb_pendaftaran
 LEFT JOIN tb_poliklinik ON tb_poliklinik.id = tb_pendaftaran.nama_poli
 LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
-LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna");
+LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna
+LEFT JOIN tb_pembatalan ON tb_pembatalan.id_pendaftaran = tb_pendaftaran.id_reg
+ where username = '$_SESSION[username_hospicare]'");
 
 $rawat_jalan = [];
 $rawat_inap = [];
@@ -33,7 +35,6 @@ while ($record = mysqli_fetch_array($query)) {
                                     <tr class="text-nowrap">
                                         <th scope="col">No</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Aksi</th>
                                         <th scope="col">Waktu Reg</th>
                                         <th scope="col">Nomor Reg</th>
                                         <th scope="col">Jenis Pelayanan</th>
@@ -53,23 +54,17 @@ while ($record = mysqli_fetch_array($query)) {
                                     foreach ($rawat_jalan as $row) { ?>
                                         <tr class="text-nowrap">
                                             <th scope="row"><?php echo $no++; ?></th>
-                                            <td>
-                                                <?php if ($row['status'] == 1) { ?>
-                                                    <span class='badge text-bg-success'>Aktif</span>
-                                                <?php } elseif ($row['status'] == 2) { ?>
-                                                    <span class='badge text-bg-danger'>Selesai</span>
-                                                <?php } ?>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <button class="<?php echo (!empty($row['status'])) ? 'btn btn-secondary btn-sm me-1 disabled' : 'btn btn-primary btn-sm me-1'; ?>" onclick="showModal(<?php echo $row['id_reg']; ?>, '<?php echo $row['jenis_pelayanan']; ?>')">
-                                                        proses
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id_reg']; ?>">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
+                                            <td><?php if ($row['status'] == 1) {
+                                                    echo "<span class= 'badge text-bg-success'>Aktif</span>";
+                                                } elseif ($row['status'] == 2) {
+                                                    echo "<span class= 'badge text-bg-danger'>Selesai</span>";
+                                                } elseif ($row['status_selesai'] == 3) {
+                                                    echo "<span class= 'badge text-bg-danger'>Dibatalkan</span>";
+                                                } elseif ($row['status'] == 0) {
+                                                    echo "<span class= 'badge text-bg-warning'>Masuk</span>";
+                                                }
+                                                ?></td>
+
                                             <td><?php echo $row['waktu']; ?></td>
                                             <td><?php echo $row['id_reg']; ?></td>
                                             <td><?php echo $row['jenis_pelayanan']; ?></td>
@@ -109,7 +104,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <tr class="text-nowrap">
                                         <th scope="col">No</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Aksi</th>
+
                                         <th scope="col">Waktu Reg</th>
                                         <th scope="col">Nomor Reg</th>
                                         <th scope="col">Jenis Pelayanan</th>
@@ -120,7 +115,8 @@ while ($record = mysqli_fetch_array($query)) {
                                         <th scope="col">Alamat</th>
                                         <th scope="col">No HP</th>
                                         <th scope="col">Kategori Kamar</th>
-                                        <th scope="col">Informasi Untuk Pendaftar</th>
+                                        <th scope="col">Informasi</th>
+                                        <th scope="col">Alasan dibatalkan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,26 +124,16 @@ while ($record = mysqli_fetch_array($query)) {
                                     foreach ($rawat_inap as $row) { ?>
                                         <tr class="text-nowrap">
                                             <th scope="row"><?php echo $no++; ?></th>
-                                            <td>
-                                                <?php if ($row['status'] == 1) { ?>
-                                                    <span class='badge text-bg-success'>Aktif</span>
-                                                <?php } elseif ($row['status'] == 2) { ?>
-                                                    <span class='badge text-bg-danger'>Selesai</span>
-                                                <?php } ?>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <button class="<?php echo (!empty($row['status'])) ? 'btn btn-secondary btn-sm me-1 disabled' : 'btn btn-primary btn-sm me-1'; ?>" onclick="showModal(<?php echo $row['id_reg']; ?>, '<?php echo $row['jenis_pelayanan']; ?>')">
-                                                        Terima
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modaldelete<?php echo $row['id_reg']; ?>">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                    <button class="<?php echo (empty($row['feedback_adm']) || $row['status'] != 1) ? 'btn btn-secondary btn-sm me-1 disabled' : 'btn btn-success btn-sm me-1'; ?>" data-bs-toggle="modal" data-bs-target="#nonaktif<?php echo $row['id_reg']; ?>">
-                                                        Selesai
-                                                    </button>
-                                                </div>
-                                            </td>
+                                            <td><?php if ($row['status'] == 1) {
+                                                    echo "<span class= 'badge text-bg-success'>Aktif</span>";
+                                                } elseif ($row['status'] == 2) {
+                                                    echo "<span class= 'badge text-bg-danger'>Selesai</span>";
+                                                } elseif ($row['status'] == 3) {
+                                                    echo "<span class= 'badge text-bg-danger'>Dibatalkan</span>";
+                                                } elseif ($row['status'] == 0) {
+                                                    echo "<span class= 'badge text-bg-warning'>di terima</span>";
+                                                }
+                                                ?></td>
                                             <td><?php echo $row['waktu']; ?></td>
                                             <td><?php echo $row['id_reg']; ?></td>
                                             <td><?php echo $row['jenis_pelayanan']; ?></td>
@@ -159,6 +145,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             <td><?php echo $row['nohp_pas']; ?></td>
                                             <td><?php echo $row['katekamr']; ?></td>
                                             <td><?php echo $row['feedback_adm']; ?></td>
+                                            <td><?php echo $row['keterangan_selesai']; ?></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

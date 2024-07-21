@@ -36,6 +36,8 @@ if (isset($_GET['x']) && $_GET['x'] == 'beranda') {
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'login') {
     include "login.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'singin') {
+    include "singin.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'logout') {
     include "proses/proses_logout.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'user') {

@@ -3,20 +3,14 @@ include "proses/connect.php";
 $query = mysqli_query($conn, "SELECT * FROM tb_pendaftaran
 LEFT JOIN tb_poliklinik ON tb_poliklinik.id = tb_pendaftaran.nama_poli
 LEFT JOIN tb_kelaskamar ON tb_kelaskamar.kategori = tb_pendaftaran.katekamr
-LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna where status='2'");
+LEFT JOIN tb_user ON tb_user.id = tb_pendaftaran.pengguna
+LEFT JOIN tb_pembatalan ON tb_pembatalan.id_pendaftaran = tb_pendaftaran.id_reg
+ where status='2'");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 
 
-$hari_terlewat_query = mysqli_query($conn, "SELECT 
-    DATEDIFF(NOW(), waktu) AS selisih_hari
-    FROM tb_pendaftaran");
-
-$selisih_hari = 0;
-if ($row = mysqli_fetch_array($hari_terlewat_query)) {
-    $selisih_hari = $row['selisih_hari'];
-}
 ?>
 
 <div class="col-lg-9 mt-2">
